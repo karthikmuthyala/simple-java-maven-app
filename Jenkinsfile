@@ -6,6 +6,18 @@ pipeline {
         }
     } */
     stages {
+        
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                    echo "d2=${d2}"
+                '''
+            }
+        }
+        
+        
         stage('Build') { 
             steps {
                 sh 'mvn clean install -DskipTests=true' 
